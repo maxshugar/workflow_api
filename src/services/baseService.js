@@ -22,7 +22,6 @@ BaseService.prototype.get = async function (id) {
     })
 }
 BaseService.prototype.create = async function (model) {
-    console.log('create called')
     return new Promise(resolve => {
         const newModel = new this.model_(model);
         newModel.save()

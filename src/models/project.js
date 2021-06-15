@@ -3,16 +3,24 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema(
   {
-    ownerId: {
-      type: Schema.Types.ObjectId,
+    _id: {
+      type: String,
       required: true,
     },
+    ownerId: {
+      type: String,
+      required: true,
+    }, 
     collaboratorIds: [
       {
         type: Schema.Types.ObjectId,
-        required: true,
+        required: false,
       },
     ],
+    gitRepoUri: {
+      type: String,
+      required: false,
+    },
     deletedAt: {
       type: String,
       default: null,
@@ -20,7 +28,8 @@ const projectSchema = new Schema(
   },
   { timestamps: true }
 );
-
-const User = mongoose.model("User", userSchema);
+ 
+const User = mongoose.model("Project", projectSchema);
 
 module.exports = User;
+ 

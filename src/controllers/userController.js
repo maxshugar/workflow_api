@@ -1,5 +1,5 @@
-const BaseController = require('./base_controller')
-const userService = require('../services/user');
+const BaseController = require('./baseController')
+const userService = require('../services/userService');
 
 function UserController(){
     BaseController.call(this, userService);

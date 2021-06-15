@@ -1,4 +1,4 @@
-const BaseService = require('./base_service');
+const BaseService = require('./baseService');
 const userModel = require('../models/user');
 
 function UserService(){
