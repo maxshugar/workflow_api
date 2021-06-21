@@ -17,7 +17,7 @@ ProjectController.prototype.create = async function(req, res){
     console.log('create called')
     console.log(req.headers.authorization)
 
-    const {_id, ownerId} = req.body;
+    const {_id, ownerId, elements} = req.body;
 
     // Create repo 
     const appOctokit = new Octokit({
@@ -31,13 +31,13 @@ ProjectController.prototype.create = async function(req, res){
         },
       });
           
-    let ret = await appOctokit.rest.repos.createInOrg({
-        org: "SonyUKTechnologyCenter",
-        name: `processEngine_${_id}`
-    }); 
+    // let ret = await appOctokit.rest.repos.createInOrg({
+    //     org: "SonyUKTechnologyCenter",
+    //     name: `processEngine_${_id}`
+    // }); 
     
-    ret = await this._service.create({_id, ownerId})
+    ret = await this._service.create({_id, ownerId, elements})
     return res.json(ret);
 }
 
-module.exports = new ProjectController();  
+module.exports = new ProjectController();

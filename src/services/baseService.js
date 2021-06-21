@@ -12,9 +12,11 @@ BaseService.prototype.getAll = async function () {
     })
 }
 BaseService.prototype.get = async function (id) {
+    console.log(id)
     return new Promise(resolve => {
         return this.model_.findById(id).exec()
         .then(res => {
+            console.log(res)
             resolve({ ok: true, msg: res });
         }).catch(err => {
             resolve({ ok: false, err });
@@ -26,7 +28,7 @@ BaseService.prototype.create = async function (model) {
         const newModel = new this.model_(model);
         newModel.save()
         .then(res => {
-            resolve({ ok: true, msg: res });
+            resolve({ ok: true, msg: res }); 
         }).catch(err => {
             resolve({ ok: false, err });
         })

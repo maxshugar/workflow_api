@@ -10,7 +10,7 @@ const projectSchema = new Schema(
     ownerId: {
       type: String,
       required: true,
-    }, 
+    },
     collaboratorIds: [
       {
         type: Schema.Types.ObjectId,
@@ -21,6 +21,12 @@ const projectSchema = new Schema(
       type: String,
       required: false,
     },
+    elements: [
+      {
+      type: Object,
+      required: false
+      }
+    ],
     deletedAt: {
       type: String,
       default: null,
@@ -28,8 +34,7 @@ const projectSchema = new Schema(
   },
   { timestamps: true }
 );
- 
+
 const User = mongoose.model("Project", projectSchema);
 
 module.exports = User;
- 
