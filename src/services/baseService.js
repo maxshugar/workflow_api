@@ -4,14 +4,8 @@ function BaseService(model) {
 BaseService.prototype.getAll = async function () {
   return new Promise((resolve) => {
     this.model_
-      .find({})
-      .exec()
-      .then((res) => {
-        resolve({ ok: true, msg: res });
-      })
-      .catch((err) => {
-        resolve({ ok: false, err });
-      });
+      .find({}).exec().then((res) => {resolve({ ok: true, msg: res });})
+      .catch((err) => {resolve({ ok: false, err });});
   });
 };
 BaseService.prototype.get = async function (id) {
@@ -20,9 +14,7 @@ BaseService.prototype.get = async function (id) {
       .findById(id)
       .exec()
       .then((res) => {
-        const { collaboratorIds, elements, _id: id, ownerId } = res;
-
-        resolve({ ok: true, msg: { collaboratorIds, elements, id, ownerId } });
+        resolve({ ok: true, msg: res });
       })
       .catch((err) => {
         resolve({ ok: false, err });
@@ -38,7 +30,7 @@ BaseService.prototype.create = async function (model) {
         resolve({ ok: true, msg: res });
       })
       .catch((err) => {
-        resolve({ ok: false, err });
+        resolve({ ok: false, err }); 
       });
   });
 };
@@ -49,22 +41,15 @@ BaseService.prototype.update = async function (model) {
       .findByIdAndUpdate(id, { collaboratorIds, elements, ownerId })
       .exec()
       .then((res) => {
- 
-        
-
-        let { collaboratorIds, elements, _id: id, ownerId } = res;
-
-        console.log(JSON.parse(elements))
-
         resolve({
           ok: true,
-          msg: { collaboratorIds, elements, id, ownerId },
+          msg: res,
         });
       })
       .catch((err) => {
         resolve({ ok: false, err });
       });
-  }); 
+  });
 };
 BaseService.prototype.delete = async function (id) {
   return new Promise((resolve) => {

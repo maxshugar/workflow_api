@@ -26,4 +26,4 @@ BaseController.prototype.delete = async function(req, res){
     const ret = await this._service.delete(id)
     return res.json(ret);
 }
-module.exports = BaseController;
+module.exports = BaseController; 
